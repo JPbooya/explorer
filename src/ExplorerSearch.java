@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class ExplorerSearch {
 
@@ -29,10 +30,30 @@ public class ExplorerSearch {
      * @return the number of spaces the explorer can reach
      */
     public static int reachableArea(int[][] island) {
-        // Implement your method here!
-        // Please also make more test cases
-        // I STRONGLY RECOMMEND testing some helpers you might make too
-        return -1;
+        int[] start = findsLocation(island);
+        boolean[][] visited =  new boolean[island.length][island[0].length];
+        Stack<int[]> toVisit = new Stack<>();
+        toVisit.push(start);
+
+        int count = 0;
+
+        while(!toVisit.isEmpty()) {
+            int[] current = toVisit.pop();
+
+            if(visited[current[0]][current[1]]) {
+                continue;
+            }
+
+            visited[current[0]][current[1]] = true;
+            count++;
+
+            List<int[]> neighbors = reachAbleIsland(island, current);
+            for(int[] neighbor : neighbors) {
+                toVisit.push(neighbor);
+            }
+        }
+
+        return count;
     }
 
     public  static List<int[]> reachAbleIsland(int[][] island , int[] current ) {

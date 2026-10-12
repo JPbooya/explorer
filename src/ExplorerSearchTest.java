@@ -65,4 +65,35 @@ public class ExplorerSearchTest {
         assertArrayEquals(new int[]{3,4}, actual);
     }
 
+     @Test            
+     public void testReachableArea_boxedIn() {
+        int[][] island = {
+            {1,3,1},
+            {2,0,3},
+            {1,2,1},
+        };
+        int actual = ExplorerSearch.reachableArea(island);
+        assertEquals(1, actual);
+    }
+
+     @Test            
+     public void testReachableArea_SingleArea() {
+        int[][] island = {
+           {0}
+        };
+        int actual = ExplorerSearch.reachableArea(island);
+        assertEquals(1, actual);
+    }
+
+    @Test            
+     public void testReachableArea_allFields() {
+        int[][] island = {
+            {1,1,1},
+            {1,0,1},
+            {1,1,1},
+        };
+        int actual = ExplorerSearch.reachableArea(island);
+        assertEquals(9, actual);
+    }
+
 }
