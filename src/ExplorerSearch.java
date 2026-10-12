@@ -34,4 +34,37 @@ public class ExplorerSearch {
         // I STRONGLY RECOMMEND testing some helpers you might make too
         return -1;
     }
+
+    public  static List<int[]> reachAbleIsland(int[][] island , int[] current ) {
+        List<int[]> neighbors = new ArrayList<>();
+
+        int row =  current[0];
+        int col = current[1];
+
+        // up
+        if(row -1 >= 0 && (island[row - 1][col] == 0 || island[row-1][col] == 1 )) {
+            int[] up = {row -1, col};
+            neighbors.add(up);
+        }
+
+        // down
+        if(row + 1 < island.length && (island[row +1][col] == 0 || island[row +1][col] == 1)) {
+            int[] down = {row +1, col};
+            neighbors.add(down);
+        }
+
+        // left
+        if(col -1 >= 0 && (island[row][col - 1] == 0 || island[row][col -1] == 1)) {
+            int[] left = {row, col -1};
+            neighbors.add(left);
+        }
+
+        // right
+        if(col + 1 < island[row].length && (island[row][col + 1] == 0 || island[row][col +1] == 1)) {
+            int[] right = {row, col +1};
+            neighbors.add(right);
+        }
+
+        return neighbors;
+    }
 }
