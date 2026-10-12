@@ -51,4 +51,18 @@ public class ExplorerSearchTest {
         assertEquals(1, moves.size());
     }
 
+    @Test
+    public void testFindsLocation() {
+        int[][] island = {
+            {1,1,1,3,1,1},
+            {3,2,3,1,3,1},
+            {1,1,1,1,3,3},
+            {3,1,2,1,0,1},
+            {1,1,1,2,1,1},
+        };
+
+        int[] actual = ExplorerSearch.findsLocation(island);
+        assertArrayEquals(new int[]{3,4}, actual);
+    }
+
 }

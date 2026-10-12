@@ -67,4 +67,16 @@ public class ExplorerSearch {
 
         return neighbors;
     }
+
+    public static int[] findsLocation(int[][] island) {
+        for(int row = 0; row < island.length; row++) {
+            for(int col = 0; col < island[row].length; col++) {
+                if(island[row][col] == 0) {
+                    int[] newLocation = {row,col};
+                    return newLocation;
+                }
+            }
+        }
+        throw new IllegalArgumentException("no valid location");
+    }
 }
